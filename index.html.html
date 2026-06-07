@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sankoun Gassama — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: #0a0a0f;
+      color: #e8e8f0;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+      border-bottom: 0.5px solid #2a2a3a;
+      position: relative;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #5b4af7, #00d4aa, #5b4af7);
+      background-size: 200%;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 0% }
+      100% { background-position: 200% }
+    }
+
+    .tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: #00d4aa;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #f0f0ff;
+      margin-bottom: 8px;
+    }
+
+    h1 span { color: #5b4af7; }
+
+    .subtitle {
+      font-size: 15px;
+      color: #8888aa;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── SOCIAL LINKS ── */
+    .social-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      padding: 7px 16px;
+      border-radius: 4px;
+      border: 0.5px solid #2a2a3a;
+      color: #aaaacc;
+      text-decoration: none;
+      background: #111118;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-links a:hover { border-color: #5b4af7; color: #d0d0ff; }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      border-bottom: 0.5px solid #2a2a3a;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: #5b4af7;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: #2a2a3a;
+    }
+
+    /* ── LANGAGES ── */
+    .langs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .lang-card {
+      background: #111118;
+      border: 0.5px solid #2a2a3a;
+      border-radius: 8px;
+      padding: 16px;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .lang-card:hover {
+      border-color: var(--accent);
+      background: #15151f;
+    }
+
+    .lang-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      border-radius: 8px 0 0 8px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .lang-card:hover::before { opacity: 1; }
+
+    .lang-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: color-mix(in srgb, var(--accent) 18%, transparent);
+      color: var(--accent);
+    }
+
+    .lang-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #e0e0f0;
+      margin-bottom: 3px;
+    }
+
+    .lang-level {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: #666688;
+      margin-bottom: 10px;
+    }
+
+    .lang-bar {
+      height: 2px;
+      background: #2a2a3a;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .lang-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--accent);
+    }
+
+    /* ── PROJETS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      background: #111118;
+      border: 0.5px solid #2a2a3a;
+      border-radius: 10px;
+      padding: 22px;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover { border-color: #5b4af7; }
+
+    .project-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: #444466;
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #e8e8ff;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: #666688;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .ptag {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      padding: 3px 9px;
+      border-radius: 3px;
+      background: #1e1e2e;
+      color: #8888bb;
+      border: 0.5px solid #2a2a3a;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: #333355;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       HEADER — Modifie ton nom, titre, et liens
+       ══════════════════════════════════════════ -->
+  <header>
+    <div class="tag">// portfolio.dev</div>
+
+    <!-- Ton nom — modifie ici -->
+    <h1>Sankoun<br><span>Gassama</span></h1>
+
+    <!-- Ton titre / accroche — modifie ici -->
+    <p class="subtitle">Développeur · Passionné de code</p>
+
+    <!-- Tes liens réseaux sociaux — remplace le # par tes vraies URLs -->
+    <div class="social-links">
+      <a href="https://github.com/sankoun692" target="_blank" rel="noopener">
+        <i class="ti ti-brand-github"></i> GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/sankoun-gassama69200" target="_blank" rel="noopener">
+        <i class="ti ti-brand-linkedin"></i> LinkedIn
+      </a>
+      <!-- Décommente la ligne ci-dessous pour ajouter Twitter/X -->
+      <!-- <a href="https://twitter.com/TON_PSEUDO" target="_blank" rel="noopener"><i class="ti ti-brand-twitter"></i> Twitter</a> -->
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION LANGAGES & FRAMEWORKS
+       Pour chaque langage :
+         - data-accent  : couleur du langage
+         - data-icon    : 2-3 lettres affichées dans le badge
+         - data-level   : largeur de la barre (0 à 100)
+         - Le texte dans <div class="lang-name"> : nom affiché
+         - Le texte dans <div class="lang-level"> : label du niveau
+       ══════════════════════════════════════════ -->
+  <section id="langages">
+    <div class="section-label">langages &amp; frameworks</div>
+
+    <div class="langs-grid">
+
+      <!-- JavaScript -->
+      <div class="lang-card" style="--accent: #ef9f27">
+        <div class="lang-icon" data-icon="JS">JS</div>
+        <div class="lang-name">JavaScript</div>
+        <div class="lang-level">Débutant</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width: 25%"></div></div>
+      </div>
+
+      <!-- PHP — exemple -->
+      <div class="lang-card" style="--accent: #7b68ee">
+        <div class="lang-icon">PH</div>
+        <div class="lang-name">PHP</div>
+        <div class="lang-level">Intermédiaire</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width: 55%"></div></div>
+      </div>
+
+      <!-- HTML / CSS — exemple -->
+      <div class="lang-card" style="--accent: #e85a3a">
+        <div class="lang-icon">WB</div>
+        <div class="lang-name">HTML / CSS</div>
+        <div class="lang-level">Avancé</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width: 80%"></div></div>
+      </div>
+
+
+      <!-- SQL — exemple -->
+      <div class="lang-card" style="--accent: #378add">
+        <div class="lang-icon">DB</div>
+        <div class="lang-name">SQL</div>
+        <div class="lang-level">Intermédiaire</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width: 55%"></div></div>
+      </div>
+
+      <!-- ── AJOUTE TES LANGAGES ICI ──
+      Copie-colle ce bloc et adapte les valeurs :
+
+      <div class="lang-card" style="- -accent: #COULEUR">
+        <div class="lang-icon">XX</div>
+        <div class="lang-name">Nom du langage</div>
+        <div class="lang-level">Niveau</div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width: XX%"></div></div>
+      </div>
+
+      Niveaux suggérés et barres :
+        Débutant       → 25%
+        Intermédiaire  → 55%
+        Avancé         → 80%
+        Expert         → 100%
+
+      Couleurs sympas :
+        JavaScript  #ef9f27
+        TypeScript  #378add
+        Python      #00d4aa
+        HTML/CSS    #e85a3a
+        React       #5b4af7
+        Vue         #639922
+        PHP         #7b68ee
+        Java        #e85a3a
+        C/C++       #378add
+        SQL         #ef9f27
+        Rust        #e85a3a
+        Go          #00d4aa
+      ── -->
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION PROJETS
+       Pour chaque projet :
+         - <div class="project-title"> : nom du projet
+         - <div class="project-desc">  : description
+         - <span class="ptag"> : tags tech (autant que tu veux)
+       ══════════════════════════════════════════ -->
+  <section id="projets">
+    <div class="section-label">projets réalisés</div>
+
+    <div class="projects-grid">
+
+      <!-- Projet 1 — exemple -->
+      <div class="project-card">
+        <div class="project-num">// projet_01</div>
+        <div class="project-title">Portfolio personnel</div>
+        <div class="project-desc">Site vitrine dark mode avec affichage des compétences et projets. Conçu pour être simple à maintenir.</div>
+        <div class="project-tags">
+          <span class="ptag">HTML</span>
+          <span class="ptag">CSS</span>
+          <span class="ptag">JavaScript</span>
+        </div>
+      </div>
+
+      <!-- Projet 2 — exemple -->
+      <div class="project-card">
+        <div class="project-num">// projet_02</div>
+        <div class="project-title">Application de gestion</div>
+        <div class="project-desc">Dashboard permettant de suivre des tâches et d'analyser des données en temps réel.</div>
+        <div class="project-tags">
+          <span class="ptag">React</span>
+          <span class="ptag">Node.js</span>
+          <span class="ptag">SQL</span>
+        </div>
+      </div>
+
+      <!-- ── AJOUTE TES PROJETS ICI ──
+      Copie-colle ce bloc :
+
+      <div class="project-card">
+        <div class="project-num">// projet_03</div>
+        <div class="project-title">Nom du projet</div>
+        <div class="project-desc">Description du projet en quelques phrases.</div>
+        <div class="project-tags">
+          <span class="ptag">Tag1</span>
+          <span class="ptag">Tag2</span>
+        </div>
+      </div>
+      ── -->
+
+    </div>
+  </section>
+
+
+  <footer>
+    <span>// Sankoun Gassama &mdash; <span id="year"></span></span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
